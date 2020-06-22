@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<section class="resume-section" id="projects">
+    <div class="resume-section-content">
+        <h2 class="mb-5">{{ category | title }}</h2>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" src="{{ project.image.url }}">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    {% for category in project.categories.all %}
+                    <a href="{% url 'project_category' category.name %}">
+                        {{ category.name }} 
+                    </a>
+                    <br>  
+                    {% endfor %}
+                    <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary"> Read More </a>
+                    <a href="{{ project.github }}" class="btn btn-secondary"> Github </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</section>
+{% endblock %}
