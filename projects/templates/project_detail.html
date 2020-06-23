@@ -19,6 +19,9 @@
                     <a href="{% url 'project_category' category.name %}">
                         {{ category.name }} 
                     </a>
+                    <br>
+                    <br>
+                    {% endfor %}
                     <a href="{{ project.github }}" class="btn btn-secondary"> Github </a>
                 </div>
             </div>
