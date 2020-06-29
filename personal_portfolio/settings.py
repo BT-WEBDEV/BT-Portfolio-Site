@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q+2-3dxzci47x)^u7v^c0mpw94qg9!92eiuutcqx$p-s5^(gr^'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,9 +138,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
 
 #AMAZON WEB SERVICES S3 ENVIRONMENT VARIABLES
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_User_Access_Key_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_User_Secret_Key')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_Bucket_Name')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 #Prevents File Overwriting
 AWS_S3_FILE_OVERWRITE = False
