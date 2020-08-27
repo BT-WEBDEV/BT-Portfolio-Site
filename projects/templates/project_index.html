@@ -9,27 +9,42 @@
             {% for project in projects %}
             <div class="col-md-12">
                 <div class="card mb-2">
-                    {% if project.img %}
-                    <img class="card-img-top" src="{{ project.image.url }}">
-                    {% endif %}
-                    <div class="card-body">
-                    <h5 class="card-title">{{ project.title }}</h5>
-                    <p class="card-text">{{ project.description|truncatewords:20 }}</p>
-                    {% for category in project.categories.all %}
-                    <a href="{% url 'project_category' category.name %}">
-                        {{ category.name }} 
-                    </a>
-                    <br>  
-                    {% endfor %}
-                    <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary"> Read More </a>
-                    <a href="{{ project.github }}" class="btn btn-secondary"> Github </a>
-                    {% if project.url %}
-                    <a href="{{ project.url }}" class="btn btn-success"> View Live </a> 
-                    {% endif %}
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+
+                    <div class="card-header">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                    </div>
+
+                    <div class="card-body"> 
+                        <div class="row"> 
+                            <div class="col-md-8">
+                                <p class="card-text">Column 1 {{ project.description|truncatewords:20 }}</p>
+                                {% for category in project.categories.all %}
+                                <a href="{% url 'project_category' category.name %}">
+                                    {{ category.name }} 
+                                </a>
+                                {% endfor %}
+                                <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary"> Read More </a>
+                                <a href="{{ project.github }}" class="btn btn-secondary"> Github </a>
+                                {% if project.url %}
+                                    <a href="{{ project.url }}" class="btn btn-success"> View Live </a> 
+                                {% endif %}
+                            </div> <!-- Card Column -->
+
+                            <div class="col-md-4">
+                                <div class="photo-box">
+                                    <img class="img-fluid" src="{{ project.image.url }}">
+                                </div>
+                            </div> <!-- Card Column 2 -->
+
+                        </div> <!-- Card Row -->
+                    </div> <!-- Card Body -->
+                </div> <!-- Card-->
+
+            </div> <!-- Cards Column -->
+            {% endfor %}
+        </div> <!-- Cards Row -->
+    </div> <!-- Content Section-->
+    
 
 </section>
 {% endblock %}
