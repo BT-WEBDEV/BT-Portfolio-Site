@@ -5,7 +5,7 @@ from projects.models import Project, Category
 
 #Project Index - Shows A Snippet of Information About Each Project
 def project_index(request): 
-    projects = Project.objects.latest('title')
+    projects = Project.objects.order_by('-id')
     context = {
         'projects' : projects
     }
