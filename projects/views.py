@@ -15,7 +15,7 @@ def project_index(request):
 def project_category(request, category):
     projects = Project.objects.filter(
         categories__name__contains = category
-    )
+    ).order_by('-id')
     context = {
         "category": category, 
         "projects": projects
