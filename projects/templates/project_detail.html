@@ -22,6 +22,9 @@
                     <br>
                     {% endfor %}
                     <a href="{{ project.github }}" class="btn btn-secondary"> Github </a>
+                    {% if project.url %}
+                            <a href="{{ project.url }}" class="btn btn-success"> View Live </a> 
+                    {% endif %}
                 </div>
             </div>
     </div>
